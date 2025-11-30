@@ -1,0 +1,23 @@
+name: CI Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # 🔥 Lint Step (Task 2)
+      - name: Run Linter
+        run: |
+          pip install flake8
+          flake8 .
+
+      # 🔥 Test Step (Task 3)
+      - name: Run Nose Tests
+        run: |
+          pip install nose
+          nosetests -v
